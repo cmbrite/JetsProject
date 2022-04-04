@@ -15,7 +15,8 @@ public abstract class Jet {
 	}
 
 	public void fly() {
-
+		Double flightTime= this.range / this.speed;
+		System.out.println("Jet - Model: " + model + ", Speed: " + speed + ", Range: " + range + ", Price: " + price + "Flight Time: " + flightTime );
 	}
 
 	@Override

@@ -1,5 +1,5 @@
 CargoPlane,C-5 Galaxy,532,5500,167000000
 FighterJet,F-16 Falcon,1318,2620,30000000
-PassengerPlane, Boeing 747-8,565,8891,419200000
-Bomber, B-2 Spirit,560,6900,737000000
+PassengerPlane,Boeing 747-8,565,8891,419200000
+Bomber,B-2 Spirit,560,6900,737000000
 RefuelingPlane,KC-10 Extender,538,4400,96000000
