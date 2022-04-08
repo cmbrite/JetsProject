@@ -60,7 +60,7 @@ public abstract class Jet {
 
 	@Override
 	public String toString() {
-		return "Jet Type: " + jetType + ", Model: " + model + ", Speed: " + speed + ", Range: " + range + ", Price: "
+		return jetType + ", Model: " + model + ", Speed: " + speed + ", Range: " + range + ", Price: "
 				+ price;
 	}
 

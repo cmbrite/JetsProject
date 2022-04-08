@@ -6,6 +6,8 @@ public class Bomber extends Jet{
 		super(jetType, model, speed, range, price);
 	}
 
-
+	public void fly() {
+		double flightTime = getRange() / getSpeed() ;
+	}
 
 }

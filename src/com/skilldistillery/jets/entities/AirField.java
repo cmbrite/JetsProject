@@ -9,17 +9,6 @@ import java.util.List;
 
 public class AirField {
 
-//	AirField flightLine = new AirField();
-
-//	public AirField() {
-////		AirField flightLine = new AirField();
-////		List<Jet> jets = new ArrayList<>();
-////		flightLine.readFromFile("Jets.txt");
-////		String fileName = "Jets.txt";
-////		AirField flightLine = new AirField();
-////		List<Jet> jets = flightLine.readFromFile(fileName);
-//
-//	}
 
 	public List<Jet> readFromFile(String fileName) {
 		List<Jet> jets = new ArrayList<>();

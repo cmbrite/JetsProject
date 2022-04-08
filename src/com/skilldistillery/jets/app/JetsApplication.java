@@ -1,15 +1,16 @@
 package com.skilldistillery.jets.app;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
 
 import com.skilldistillery.jets.entities.AirField;
+import com.skilldistillery.jets.entities.Bomber;
+import com.skilldistillery.jets.entities.CargoPlane;
+import com.skilldistillery.jets.entities.FighterJet;
 import com.skilldistillery.jets.entities.Jet;
+import com.skilldistillery.jets.entities.PassengerPlane;
+import com.skilldistillery.jets.entities.RefuelingPlane;
 
 public class JetsApplication {
 
@@ -17,7 +18,7 @@ public class JetsApplication {
 	public AirField flightLine = new AirField();
 	public List<Jet> jets = flightLine.readFromFile("Jets.txt");
 //	List<Jet> jets = flightLine.readFromFile("Jets.txt");
-	
+
 	public static void main(String[] args) {
 		JetsApplication app = new JetsApplication();
 		app.launch();
@@ -52,7 +53,7 @@ public class JetsApplication {
 				listFleet();
 				break;
 			case 2:
-//			fly();
+//				flyAllJets();
 				break;
 			case 3:
 //			fastestJet();
@@ -67,10 +68,10 @@ public class JetsApplication {
 //			dogFight();
 				break;
 			case 7:
-//			addJet();
+				addJet();
 				break;
 			case 8:
-//			removeJet();
+				removeJet();
 				break;
 			case 9:
 				System.out.println("GoodBye!");
@@ -82,37 +83,83 @@ public class JetsApplication {
 	}
 
 	public void removeJet() {
-		// TODO create
+		System.out.println("Please select the number of the jet you would like to remove.");
+		int i;
+		for (i = 0; i < jets.size(); i++) {
+			System.out.println((i + 1) + ": " + jets.get(i));
+		}int jetToRemove = input.nextInt() - 1;
+		jets.remove(jetToRemove);
+		
 	}
 
 	public void addJet() {
-		// TODO create
-	}
+		System.out.println("Please enter a number to select the Jet Type:");
+		System.out.println("1 for a Cargo Plane.");
+		System.out.println("2 for a Fighter Jet.");
+		System.out.println("3 for a Passenger Plane.");
+		System.out.println("4 for a Bomber.");
+		System.out.println("5 for an Aerial Refueler.");
+		int jetSelection = input.nextInt();
+		input.nextLine();
+		System.out.println("Please enter the model:");
+		String model = input.nextLine();
+		System.out.println("Please enter the max speed:");
+		double speed = input.nextDouble();
+		System.out.println("Please enter the max range:");
+		int range = input.nextInt();
+		System.out.println("Please enter the price:");
+		long price = input.nextInt();
 
-	public void dogFight() {
-		// TODO call fight implementors
+		if (jetSelection == 1) {
+			Jet j = new CargoPlane("CargoPlane", model, speed, range, price);
+			jets.add(j);
+		} else if (jetSelection == 2) {
+			Jet j = new FighterJet("FighterJet", model, speed, range, price);
+			jets.add(j);
+		} else if (jetSelection == 3) {
+			Jet j = new PassengerPlane("PassengerPlane", model, speed, range, price);
+			jets.add(j);
+		} else if (jetSelection == 4) {
+			Jet j = new Bomber("Bomber", model, speed, range, price);
+			jets.add(j);
+		} else if (jetSelection == 5) {
+			Jet j = new RefuelingPlane("RefuelingPlane", model, speed, range, price);
+			jets.add(j);
+		}
 	}
-
-	public void loadCargo() {
-		// TODO call cargo implementors
-	}
-
-	public void longestRange() {
-		// TODO print longest range
-	}
-
-	public void fastestJet() {
-		// TODO print fastest jet
-	}
-
-	public void flyAllJets() {
-		// TODO call fly() with data and flight time.
-	}
+//
+//	public void dogFight() {
+//		// TODO call fight implementors
+//	}
+//
+//	public void loadCargo() {
+//		// TODO call cargo implementors
+//	}
+//
+//	public void longestRange() {
+//		int i;
+//		for (i = 0; i < jets.size(); i++) {
+//			jets.get(i);
+//		}jets.
+//	}
+//
+//	public void fastestJet() {
+//		Jet fastest = null;
+//		for (int i = 0; i < jets.size(); i++) {
+//		}
+//	}
+//
+//	public void flyAllJets() {
+//		for (int i = 0; i < jets.size(); i++) {
+//
+////			System.out.println("Jet-" + (i + 1) + ": " + jets.get(i));
+//		}
+//	}
 
 	public void listFleet() {
 
 		for (int i = 0; i < jets.size(); i++) {
-			System.out.println(jets.get(i));
+			System.out.println("Jet-" + (i + 1) + ": " + jets.get(i));
 		}
 	}
 
