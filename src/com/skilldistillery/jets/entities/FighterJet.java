@@ -1,12 +1,12 @@
 package com.skilldistillery.jets.entities;
 
 public class FighterJet extends Jet {
-	private int missleCapacity;
-	
-	public FighterJet(String model, double speed, int range, long price, int missleCapacity) {
-		super(model, speed, range, price);
-		this.missleCapacity = missleCapacity;
+
+	public FighterJet(String jetType, String model, double speed, int range, long price) {
+		super(jetType, model, speed, range, price);
 	}
+
+	private int missleCapacity;
 
 	public int getMissleCapacity() {
 		return missleCapacity;

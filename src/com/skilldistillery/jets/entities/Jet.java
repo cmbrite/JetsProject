@@ -1,27 +1,27 @@
 package com.skilldistillery.jets.entities;
 
 public abstract class Jet {
+	private String jetType;
 	private String model;
 	private double speed;
 	private int range;
 	private long price;
-
-	public Jet(String model, double speed, int range, long price) {
+	
+	public Jet(String jetType, String model, double speed, int range, long price) {
 		super();
+		this.jetType = jetType;
 		this.model = model;
 		this.speed = speed;
 		this.range = range;
 		this.price = price;
 	}
 
-	public void fly() {
-		Double flightTime= this.range / this.speed;
-		System.out.println("Jet - Model: " + model + ", Speed: " + speed + ", Range: " + range + ", Price: " + price + "Flight Time: " + flightTime );
+	public String getJetType() {
+		return jetType;
 	}
 
-	@Override
-	public String toString() {
-		return "Jet [model=" + model + ", speed=" + speed + ", range=" + range + ", price=" + price + "]";
+	public void setJetType(String jetType) {
+		this.jetType = jetType;
 	}
 
 	public String getModel() {
@@ -56,4 +56,11 @@ public abstract class Jet {
 		this.price = price;
 	}
 
+	@Override
+	public String toString() {
+		return "Jet Type: " + jetType + ", Model: " + model + ", Speed: " + speed + ", Range: " + range + ", Price: "
+				+ price;
+	}
+
+	
 }

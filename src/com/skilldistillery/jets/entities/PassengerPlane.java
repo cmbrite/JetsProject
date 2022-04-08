@@ -1,13 +1,15 @@
 package com.skilldistillery.jets.entities;
 
 public class PassengerPlane extends Jet {
+	
+	public PassengerPlane(String jetType, String model, double speed, int range, long price) {
+		super(jetType, model, speed, range, price);
+	}
+
 	private int passengerCapacity;
 	
 
-	public PassengerPlane(String model, double speed, int range, long price, int passengerCapacity) {
-		super(model, speed, range, price);
-		this.passengerCapacity = passengerCapacity;
-	}
+
 
 	public int getPassengerCapacity() {
 		return passengerCapacity;

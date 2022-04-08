@@ -5,68 +5,50 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class AirField {
 
-	AirField flightLine = new AirField();
+//	AirField flightLine = new AirField();
 
-	private List<Jet> jets;
+//	public AirField() {
+////		AirField flightLine = new AirField();
+////		List<Jet> jets = new ArrayList<>();
+////		flightLine.readFromFile("Jets.txt");
+////		String fileName = "Jets.txt";
+////		AirField flightLine = new AirField();
+////		List<Jet> jets = flightLine.readFromFile(fileName);
+//
+//	}
 
-	public List<Jet> getJets() {
-		return jets;
-	}
-
-	public void setJets(List<Jet> jets) {
-		this.jets = jets;
-	}
-
-	public AirField() {
-//		AirField flightLine = new AirField();
-
+	public List<Jet> readFromFile(String fileName) {
 		List<Jet> jets = new ArrayList<>();
-
-		readFromFile();
-
-	}
-
-	private void readFromFile() {
-		String line;
-		try {
-			BufferedReader reader = new BufferedReader(new FileReader("Jets.txt"));
+		try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+			String line;
 			while ((line = reader.readLine()) != null) {
-				String[] jetArr = line.split(",");
-				String model;
-				double speed;
-				int range;
-				long price;
+				String[] jetsColl = line.split(",");
+				String jetType = jetsColl[0];
+				String model = jetsColl[1];
+				double speed = Double.parseDouble(jetsColl[2]);
+				int range = Integer.parseInt(jetsColl[3]);
+				long price = Long.parseLong(jetsColl[4]);
+//				Jet js = new Jet(model, speed, range, price);
 
-				if (jetArr[0].equals("CargoPlane")) {
-					model = jetArr[1];
-					speed = Double.parseDouble(jetArr[2]);
-					range = Integer.parseInt(jetArr[3]);
-					price = Long.parseLong(jetArr[4]);
-				} else if (jetArr[0].equals("FighterJet")) {
-					model = jetArr[1];
-					speed = Double.parseDouble(jetArr[2]);
-					range = Integer.parseInt(jetArr[3]);
-					price = Long.parseLong(jetArr[4]);
-				} else if (jetArr[0].equals("PasengerPlane")) {
-					model = jetArr[1];
-					speed = Double.parseDouble(jetArr[2]);
-					range = Integer.parseInt(jetArr[3]);
-					price = Long.parseLong(jetArr[4]);
-				} else if (jetArr[0].equals("Bomber")) {
-					model = jetArr[1];
-					speed = Double.parseDouble(jetArr[2]);
-					range = Integer.parseInt(jetArr[3]);
-					price = Long.parseLong(jetArr[4]);
-				} else if (jetArr[0].equals("RefuelingPlane")) {
-					model = jetArr[1];
-					speed = Double.parseDouble(jetArr[2]);
-					range = Integer.parseInt(jetArr[3]);
-					price = Long.parseLong(jetArr[4]);
+				if (jetsColl[0].equals("CargoPlane")) {
+					Jet j = new CargoPlane(jetType, model, speed, range, price);
+					jets.add(j);
+				} else if (jetsColl[0].equals("FighterJet")) {
+					Jet j = new FighterJet(jetType, model, speed, range, price);
+					jets.add(j);
+				} else if (jetsColl[0].equals("PassengerPlane")) {
+					Jet j = new PassengerPlane(jetType, model, speed, range, price);
+					jets.add(j);
+				} else if (jetsColl[0].equals("Bomber")) {
+					Jet j = new Bomber(jetType, model, speed, range, price);
+					jets.add(j);
+				} else if (jetsColl[0].equals("RefuelingPlane")) {
+					Jet j = new RefuelingPlane(jetType, model, speed, range, price);
+					jets.add(j);
 				}
 			}
 		} catch (FileNotFoundException e) {
@@ -74,6 +56,7 @@ public class AirField {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		return jets;
 	}
 
 }
