@@ -17,12 +17,10 @@ public class JetsApplication {
 	Scanner input = new Scanner(System.in);
 	public AirField flightLine = new AirField();
 	public List<Jet> jets = flightLine.readFromFile("Jets.txt");
-//	List<Jet> jets = flightLine.readFromFile("Jets.txt");
 
 	public static void main(String[] args) {
 		JetsApplication app = new JetsApplication();
 		app.launch();
-//		System.out.println(jets);
 
 	}
 
@@ -34,7 +32,7 @@ public class JetsApplication {
 	private void displayUserMenu() {
 
 		int menuChoice = 0;
-		do {
+		while (menuChoice != 9) {
 			System.out.println("Please select 1 - 9 for a menu choice");
 			System.out.println("----------------------------------");
 			System.out.println("* 1. List Fleet.");
@@ -48,7 +46,7 @@ public class JetsApplication {
 			System.out.println("* 9. Quit. ");
 			System.out.println("----------------------------------");
 
-			switch (input.nextInt()) {
+			switch (menuChoice = input.nextInt()) {
 			case 1:
 				listFleet();
 				break;
@@ -75,11 +73,12 @@ public class JetsApplication {
 				break;
 			case 9:
 				System.out.println("GoodBye!");
+
 				break;
 			default:
 				System.out.println("Invalid menu choice! Select 1 - 9.");
 			}
-		} while (menuChoice != 9);
+		}
 	}
 
 	public void removeJet() {
@@ -87,9 +86,10 @@ public class JetsApplication {
 		int i;
 		for (i = 0; i < jets.size(); i++) {
 			System.out.println((i + 1) + ": " + jets.get(i));
-		}int jetToRemove = input.nextInt() - 1;
+		}
+		int jetToRemove = input.nextInt() - 1;
 		jets.remove(jetToRemove);
-		
+
 	}
 
 	public void addJet() {
