@@ -6,14 +6,4 @@ public class FighterJet extends Jet {
 		super(jetType, model, speed, range, price);
 	}
 
-	private int missleCapacity;
-
-	public int getMissleCapacity() {
-		return missleCapacity;
-	}
-
-	public void setMissleCapacity(int missleCapacity) {
-		this.missleCapacity = missleCapacity;
-	}
-
 }

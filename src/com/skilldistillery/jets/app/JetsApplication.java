@@ -14,14 +14,14 @@ import com.skilldistillery.jets.entities.Jet;
 public class JetsApplication {
 
 	Scanner input = new Scanner(System.in);
-
+	public AirField flightLine = new AirField();
+	public List<Jet> jets = flightLine.readFromFile("Jets.txt");
+//	List<Jet> jets = flightLine.readFromFile("Jets.txt");
+	
 	public static void main(String[] args) {
-		String fileName = "Jets.txt";
-		AirField flightLine = new AirField();
-		List<Jet> jets = flightLine.readFromFile(fileName);
-		System.out.println(jets + "\n");
 		JetsApplication app = new JetsApplication();
 		app.launch();
+//		System.out.println(jets);
 
 	}
 
@@ -111,7 +111,9 @@ public class JetsApplication {
 
 	public void listFleet() {
 
+		for (int i = 0; i < jets.size(); i++) {
+			System.out.println(jets.get(i));
+		}
 	}
-
 
 }
